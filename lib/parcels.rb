@@ -1,19 +1,17 @@
 class Parcel
-  define_method(:initialize) do |length, height, width|
+  define_method(:initialize) do |length, height, width, weight|
     @length = length
     @height = height
     @width = width
-    @volume = @length * @height * @width
-    @shipping_cost = 0.01
+    @weight = weight
   end
 
   define_method(:volume) do
-    @volume
+    @length * @height * @width
   end
 
   define_method(:cost_to_ship) do
-    @shipping_cost = @volume * 2.00 / 100.00
-
+    @shipping_cost = @weight * 2.0
     "$" + sprintf("%.2f", @shipping_cost)
   end
 end
